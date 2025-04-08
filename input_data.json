@@ -1,0 +1,51 @@
+{
+    "numScenario": 3,
+    "parameters": [
+        {
+            "name": "endYear",
+            "path": "endYear",
+            "properties": {
+                "type": "integer",
+                "minimum": {
+                    "parameters": {
+                        "name": "startYear",
+                        "path": "startYear"
+                    }
+                },
+                "maximum": 2029
+            }
+        },
+        {
+            "name": "startYear",
+            "path": "startYear",
+            "properties": {
+                "type": "integer",
+                "minimum": 2000,
+                "maximum": 2029
+            }
+        },
+        {
+            "name": "age",
+            "path": "age",
+            "properties": {
+                "type": "integer",
+                "distribution": "normal",
+                "mean": 35,
+                "sigma": 30,
+                "minimum": 18,
+                "maximum": 100
+            }
+        },
+        {
+            "name": "status",
+            "path": "status",
+            "properties": {
+                "type": "enum",
+                "value": [
+                    "active",
+                    "inactive"
+                ]
+            }
+        }
+    ]
+}

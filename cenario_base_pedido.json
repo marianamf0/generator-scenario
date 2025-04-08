@@ -1,0 +1,15 @@
+{
+  "pedido_id": 123,
+  "itens": [
+    {
+      "produto_id": "A001",
+      "quantidade": 2
+    }
+  ],
+  "produtos": [
+    {
+      "id": "A001",
+      "nome": "Cadeira"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+    "startYear": 2024,
+    "endYear": 2029,
+    "age": 71,
+    "email": "yangcrystal@example.com",
+    "status": "inactive",
+    "data": [
+        7,
+        94,
+        81
+    ],
+    "product": [
+        {
+            "id": 86,
+            "name": "foreign"
+        },
+        {
+            "id": 30,
+            "name": "ahead"
+        },
+        {
+            "id": 84,
+            "name": "serve"
+        }
+    ]
+}

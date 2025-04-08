@@ -1,0 +1,154 @@
+{
+    "type": [
+        "object",
+        "null"
+    ],
+    "dependencies": {
+        "type": "condicional",
+        "condition": {
+            "parameter": {
+                "name": "filterBusiness",
+                "path": "generalData.basicInfo.filterBusiness"
+            },
+            "operator": "==",
+            "parameter2": [
+                "Geradora"
+            ],
+            "propertiesTrue": {
+                "type": "object",
+                "properties": {
+                    "purchaseAmount": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "dependencies": {
+                            "type": "calculation",
+                            "parameters": [
+                                {
+                                    "parameter": {
+                                        "name": "endYear",
+                                        "path": "generalData.basicInfo.endYear"
+                                    },
+                                    "parameter2": {
+                                        "name": "startYear",
+                                        "path": "generalData.basicInfo.startYear"
+                                    },
+                                    "operation": "-",
+                                    "offset": 1,
+                                    "propertie": "lengthItems"
+                                }
+                            ]
+                        }
+                    },
+                    "saleAmount": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "dependencies": {
+                            "type": "calculation",
+                            "parameters": [
+                                {
+                                    "parameter": {
+                                        "name": "endYear",
+                                        "path": "generalData.basicInfo.endYear"
+                                    },
+                                    "parameter2": {
+                                        "name": "startYear",
+                                        "path": "generalData.basicInfo.startYear"
+                                    },
+                                    "operation": "-",
+                                    "offset": 1,
+                                    "propertie": "lengthItems"
+                                }
+                            ]
+                        }
+                    },
+                    "balanceRestrictions": {
+                        "type": "boolean"
+                    },
+                    "expandedObjectives": {
+                        "type": "boolean"
+                    },
+                    "nonlinearity": {
+                        "type": "boolean"
+                    },
+                    "numLayers": {
+                        "type": "integer"
+                    },
+                    "numParetoPoints": {
+                        "type": "integer"
+                    },
+                    "restrainingFactorRI": {
+                        "type": "number"
+                    },
+                    "restrainingFactorEPAR": {
+                        "type": "number"
+                    },
+                    "restrictionMargin": {
+                        "type": "number"
+                    },
+                    "revenueUniformity": {
+                        "type": "boolean"
+                    },
+                    "riskRestrictions": {
+                        "type": "boolean"
+                    },
+                    "riskUniformity": {
+                        "type": "boolean"
+                    },
+                    "riskConstraints": {
+                        "type": [
+                            "null"
+                        ]
+                    },
+                    "monthlyRisk": {
+                        "type": "boolean"
+                    },
+                    "hourlyRisk": {
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "monthlyRevenue": {
+                        "type": "boolean"
+                    },
+                    "hourlyRevenue": {
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "hourlyRiskRestrictions": {
+                        "type": [
+                            "object",
+                            "null"
+                        ]
+                    }
+                },
+                "required": [
+                    "purchaseAmount",
+                    "saleAmount",
+                    "balanceRestrictions",
+                    "expandedObjectives",
+                    "nonlinearity",
+                    "numLayers",
+                    "numParetoPoints",
+                    "restrainingFactorRI",
+                    "restrainingFactorEPAR",
+                    "restrictionMargin",
+                    "revenueUniformity",
+                    "riskRestrictions",
+                    "riskUniformity",
+                    "monthlyRisk",
+                    "monthlyRevenue"
+                ]
+            },
+            "propertiesFalse": {
+                "type": "null"
+            }
+        }
+    }
+}

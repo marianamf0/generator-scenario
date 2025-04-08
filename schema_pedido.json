@@ -1,0 +1,50 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "pedido_id": {
+            "type": "integer"
+        },
+        "itens": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "produto_id": {
+                        "type": "string"
+                    },
+                    "quantidade": {
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "produto_id",
+                    "quantidade"
+                ]
+            }
+        },
+        "produtos": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nome": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "nome"
+                ]
+            }
+        }
+    },
+    "required": [
+        "pedido_id",
+        "itens",
+        "produtos"
+    ]
+}

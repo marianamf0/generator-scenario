@@ -1,0 +1,20 @@
+{
+    "$id": "main.json",
+    "properties": {
+        "generalData": {
+            "type": "object",
+            "properties": {
+                "basicInfo": {
+                    "$ref": "basicinfo.json"
+                },
+                "optimizerOpt": {
+                    "$ref": "optimizeropt.json"
+                }
+            }
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "generalData"
+    ]
+}

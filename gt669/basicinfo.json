@@ -1,0 +1,391 @@
+{
+    "type": "object",
+    "properties": {
+        "pldBounds": {
+            "type": "boolean"
+        },
+        "contractsReduction": {
+            "type": "boolean"
+        },
+        "cemigUte": {
+            "type": "boolean",
+            "dependencies": {
+                "type": "condicional",
+                "condition": {
+                    "parameter": {
+                        "name": "filterBusiness",
+                        "path": "generalData.basicInfo.filterBusiness"
+                    },
+                    "operator": "==",
+                    "parameter2": [
+                        "Comercializadora"
+                    ],
+                    "propertiesTrue": {
+                        "type": "enum",
+                        "value": [
+                            false
+                        ]
+                    },
+                    "propertiesFalse": {
+                        "type": "enum",
+                        "value": [
+                            true,
+                            false
+                        ]
+                    }
+                }
+            }
+        },
+        "secondaryEnergy": {
+            "type": "boolean",
+            "dependencies": {
+                "type": "condicional",
+                "condition": {
+                    "parameter": {
+                        "name": "filterBusiness",
+                        "path": "generalData.basicInfo.filterBusiness"
+                    },
+                    "operator": "==",
+                    "parameter2": [
+                        "Comercializadora"
+                    ],
+                    "propertiesTrue": {
+                        "type": "enum",
+                        "value": [
+                            false
+                        ]
+                    },
+                    "propertiesFalse": {
+                        "type": "enum",
+                        "value": [
+                            true,
+                            false
+                        ]
+                    }
+                }
+            }
+        },
+        "surplus": {
+            "type": "boolean",
+            "dependencies": {
+                "type": "condicional",
+                "condition": {
+                    "parameter": {
+                        "name": "filterBusiness",
+                        "path": "generalData.basicInfo.filterBusiness"
+                    },
+                    "operator": "==",
+                    "parameter2": [
+                        "Comercializadora"
+                    ],
+                    "propertiesTrue": {
+                        "type": "enum",
+                        "value": [
+                            false
+                        ]
+                    },
+                    "propertiesFalse": {
+                        "type": "enum",
+                        "value": [
+                            true,
+                            false
+                        ]
+                    }
+                }
+            }
+        },
+        "minPld": {
+            "type": [
+                "number",
+                "null"
+            ],
+            "dependencies": {
+                "type": "condicional",
+                "condition": {
+                    "parameter": {
+                        "name": "pldBounds",
+                        "path": "generalData.basicInfo.pldBounds"
+                    },
+                    "operator": "==",
+                    "parameter2": true,
+                    "propertiesTrue": {
+                        "type": "number",
+                        "minimum": 60,
+                        "maximum": 600
+                    },
+                    "propertiesFalse": {
+                        "type": "null"
+                    }
+                }
+            }
+        },
+        "maxPld": {
+            "type": [
+                "number",
+                "null"
+            ],
+            "dependencies": {
+                "type": "condicional",
+                "condition": {
+                    "parameter": {
+                        "name": "pldBounds",
+                        "path": "generalData.basicInfo.pldBounds"
+                    },
+                    "operator": "==",
+                    "parameter2": true,
+                    "propertiesTrue": {
+                        "type": "number",
+                        "maximum": 600,
+                        "dependencies": {
+                            "type": "consequence",
+                            "properties": {
+                                "minimum": {
+                                    "name": "minPld",
+                                    "path": "generalData.basicInfo.minPld"
+                                }
+                            }
+                        }
+                    },
+                    "propertiesFalse": {
+                        "type": "null"
+                    }
+                }
+            }
+        },
+        "startMonth": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 12
+        },
+        "startYear": {
+            "type": "integer",
+            "minimum": 2000,
+            "maximum": 2100
+        },
+        "endYear": {
+            "type": "integer",
+            "dependencies": {
+                "type": "consequence",
+                "properties": {
+                    "minimum": {
+                        "name": "startYear",
+                        "path": "generalData.basicInfo.startYear"
+                    },
+                    "dependencies": {
+                        "type": "calculation",
+                        "parameters": [
+                            {
+                                "parameter": {
+                                    "name": "startYear",
+                                    "path": "generalData.basicInfo.startYear"
+                                },
+                                "operation": "+",
+                                "parameter2": 4,
+                                "propertie": "maximum"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "refTimePld": {
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "minTimePld": {
+            "type": [
+                "number",
+                "null"
+            ],
+            "dependencies": {
+                "type": "condicional",
+                "condition": {
+                    "parameter": {
+                        "name": "refTimePld",
+                        "path": "generalData.basicInfo.refTimePld"
+                    },
+                    "operator": "==",
+                    "parameter2": [
+                        null,
+                        false
+                    ],
+                    "propertiesTrue": {
+                        "type": "null"
+                    },
+                    "propertiesFalse": {
+                        "type": "number",
+                        "minimum": 60,
+                        "maximum": 600
+                    }
+                }
+            }
+        },
+        "maxTimePld": {
+            "type": [
+                "number",
+                "null"
+            ],
+            "dependencies": {
+                "type": "condicional",
+                "condition": {
+                    "parameter": {
+                        "name": "refTimePld",
+                        "path": "generalData.basicInfo.refTimePld"
+                    },
+                    "operator": "==",
+                    "parameter2": [
+                        null,
+                        false
+                    ],
+                    "propertiesTrue": {
+                        "type": "null"
+                    },
+                    "propertiesFalse": {
+                        "type": "number",
+                        "maximum": 600,
+                        "dependencies": {
+                            "type": "consequence",
+                            "properties": {
+                                "minimum": {
+                                    "name": "minTimePld",
+                                    "path": "generalData.basicInfo.minTimePld"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "maxPldStructural": {
+            "type": [
+                "number",
+                "null"
+            ],
+            "dependencies": {
+                "type": "condicional",
+                "condition": {
+                    "parameter": {
+                        "name": "refTimePld",
+                        "path": "generalData.basicInfo.refTimePld"
+                    },
+                    "operator": "==",
+                    "parameter2": [
+                        null,
+                        false
+                    ],
+                    "propertiesTrue": {
+                        "type": "null"
+                    },
+                    "propertiesFalse": {
+                        "type": "number",
+                        "dependencies": {
+                            "type": "consequence",
+                            "properties": {
+                                "minimum": {
+                                    "name": "minTimePld",
+                                    "path": "generalData.basicInfo.minTimePld"
+                                },
+                                "maximum": {
+                                    "name": "maxTimePld",
+                                    "path": "generalData.basicInfo.maxTimePld"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "avgPld": {
+            "type": "boolean"
+        },
+        "avgPldSubmarket": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 4
+        },
+        "refSubsystem": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 4
+        },
+        "irPrice": {
+            "type": "array",
+            "items": {
+                "type": "number",
+                "minimum": 100,
+                "maximum": 400
+            },
+            "dependencies": {
+                "type": "calculation",
+                "parameters": [
+                    {
+                        "parameter": {
+                            "name": "endYear",
+                            "path": "generalData.basicInfo.endYear"
+                        },
+                        "parameter2": {
+                            "name": "startYear",
+                            "path": "generalData.basicInfo.startYear"
+                        },
+                        "operation": "-",
+                        "offset": 1,
+                        "propertie": "lengthItems"
+                    }
+                ]
+            }
+        },
+        "irFactor": {
+            "type": "integer"
+        },
+        "adjustedDeck": {
+            "type": "boolean"
+        },
+        "filterAgent": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "CEMIG GT",
+                    "CEMIG H"
+                ]
+            }
+        },
+        "filterBusiness": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "Geradora",
+                    "Comercializadora",
+                    "Geradora e Comercializadora"
+                ]
+            }
+        }
+    },
+    "required": [
+        "pldBounds",
+        "contractsReduction",
+        "cemigUte",
+        "secondaryEnergy",
+        "surplus",
+        "minPld",
+        "maxPld",
+        "startMonth",
+        "startYear",
+        "endYear",
+        "refTimePld",
+        "minTimePld",
+        "maxTimePld",
+        "maxPldStructural",
+        "avgPld",
+        "avgPldSubmarket",
+        "refSubsystem",
+        "irPrice",
+        "irFactor",
+        "adjustedDeck",
+        "filterAgent",
+        "filterBusiness"
+    ]
+}
